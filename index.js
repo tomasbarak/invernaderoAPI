@@ -5,6 +5,7 @@ const path = require("path");
 const fs = require("fs");
 const http = require("http");
 
+const port = process.env.PORT || 3000;
 const handleError = (err, res) => {
     res
         .status(500)
@@ -16,7 +17,6 @@ const upload = multer({
     dest: "/temp"
     // you might also want to set some limits: https://github.com/expressjs/multer#limits
 });
-
 
 app.post(
     "/uploads",
@@ -49,6 +49,6 @@ app.post(
 app.get('/', function (req, res) {
     res.send('Saludos desde express');
 });
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("El servidor está inicializado en el puerto 3000");
 });
